@@ -1,10 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export interface iconProps extends React.HTMLAttributes<HTMLButtonElement> {
+export interface iconProps {
 	className?: string;
 	type?: 'fixed' | 'copy' | 'close';
 	size?: number;
+	style?: React.CSSProperties;
 }
 
 const svgMap = {
@@ -31,15 +32,15 @@ const svgMap = {
 };
 
 const Icon = (props: iconProps) => {
-	const { className, type = 'fixed', size = 32, ...restProps } = props;
+	const { className, type = 'fixed', size = 32, style, ...restProps } = props;
 
 	const cls = classNames('ant-icon', className);
 
-	const style: React.CSSProperties = { ...props.style };
+	const iStyle: React.CSSProperties = { ...style };
 
 	if (size) {
-		style.width = size;
-		style.height = size;
+		iStyle.width = size;
+		iStyle.height = size;
 	}
 
 	if (type in svgMap) {
@@ -48,7 +49,7 @@ const Icon = (props: iconProps) => {
 		return React.cloneElement(svg, {
 			...restProps,
 			className: cls,
-			style,
+			style: iStyle,
 		});
 	}
 

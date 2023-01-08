@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import './index.scss';
 
-interface tagProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface tagProps {
 	className?: string;
 	closable?: boolean;
 	color?: string;
 	visible?: boolean;
 	onClose?: (e: React.MouseEvent<HTMLElement>) => void;
+	children: React.ReactNode;
+	style?: React.CSSProperties;
 }
 
 const Tag = (props: tagProps) => {
@@ -47,7 +49,7 @@ const Tag = (props: tagProps) => {
 
 	return (
 		<span className={cls} style={style} {...restProps}>
-			{children}{' '}
+			{children}
 			{closable ? (
 				<span onClick={handleClick} style={{ cursor: 'pointer' }}>
 					x
