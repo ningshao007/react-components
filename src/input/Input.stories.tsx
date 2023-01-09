@@ -1,7 +1,8 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Input from './Input';
+import Input from './index';
+import TextArea2 from './TextArea';
 
 export default {
 	title: 'Example/Input',
@@ -58,9 +59,7 @@ export const Control = () => {
 	);
 };
 
-const onChange = (e: any) => {
-	console.log('Change:', e.target.value);
-};
+const onChange = (e: any) => {};
 
 export const MaxLength = () => (
 	<>
@@ -68,14 +67,36 @@ export const MaxLength = () => (
 	</>
 );
 
-// export const TextAreaBasic = () => (
-//   <>
-//     <Input.TextArea onChange={onChange} defaultValue="a\nb\nc\nd\ncddd"/>
-//   </>
-// );
+export const TextAreaBasic = () => (
+	<>
+		<Input.TextArea onChange={onChange} defaultValue='a\nb\nc\nd\ncddd' />
+	</>
+);
 
 // export const TextAreaMaxLength = () => (
 //   <>
 //     <Input.TextArea showCount maxLength={20} onChange={onChange} />
 //   </>
 // );
+
+const TextArea = Input.TextArea;
+
+export const TextAreaAutoSize = () => (
+	<>
+		<TextArea placeholder='Autosize height based on content lines' autoSize />
+		<div style={{ margin: '24px 0' }} />
+		<TextArea placeholder='Autosize height with minimum and maximum number of lines' autoSize={{ minRows: 2, maxRows: 6 }} />
+		<div style={{ margin: '24px 0' }} />
+		<TextArea placeholder='Controlled autosize' autoSize={{ minRows: 3, maxRows: 5 }} />
+	</>
+);
+
+export const TextAreaAutoSize2 = () => (
+	<>
+		<TextArea2 placeholder='Autosize height based on content lines' autoSize />
+		<div style={{ margin: '24px 0' }} />
+		<TextArea2 placeholder='Autosize height with minimum and maximum number of lines' autoSize={{ minRows: 2, maxRows: 6 }} />
+		<div style={{ margin: '24px 0' }} />
+		<TextArea2 placeholder='Controlled autosize' autoSize={{ minRows: 3, maxRows: 5 }} />
+	</>
+);
