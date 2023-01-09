@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import Input from './index';
-import TextArea2 from './TextArea';
+import TextArea2 from './TextArea2';
 
 export default {
 	title: 'Example/Input',
@@ -59,7 +59,7 @@ export const Control = () => {
 	);
 };
 
-const onChange = (e: any) => {};
+const onChange = () => {};
 
 export const MaxLength = () => (
 	<>
