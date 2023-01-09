@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import classNames from 'classnames';
 import './index.scss';
 
-export interface radioProps extends React.HTMLAttributes<HTMLInputElement> {
+export interface RadioProps extends React.HTMLAttributes<HTMLInputElement> {
 	value?: string;
 	checked?: boolean;
 	defaultChecked?: boolean;
@@ -13,7 +13,7 @@ export interface radioProps extends React.HTMLAttributes<HTMLInputElement> {
 	style?: React.CSSProperties;
 }
 
-const Radio = (props: radioProps) => {
+const Radio = (props: RadioProps) => {
 	const { disabled, className, children, style, onChange, value, ...restProps } = props;
 	const [checked, setChecked] = useState(false);
 	const inputEl = useRef(null);
@@ -51,5 +51,7 @@ const Radio = (props: radioProps) => {
 		</span>
 	);
 };
+
+Radio.displayName = 'Radio';
 
 export default Radio;
