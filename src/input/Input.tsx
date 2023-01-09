@@ -1,5 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import classNames from 'classnames';
+import './index.scss';
 
 // extends Omit<React.HTMLAttributes<HTMLInputElement>, 'size'>
 export interface InputProps {
