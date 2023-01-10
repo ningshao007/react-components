@@ -3,7 +3,7 @@ import { ComponentMeta } from '@storybook/react';
 
 import { MessageInner } from './Message';
 
-// import message from './Message';
+import message from './Message';
 
 export default {
 	title: 'Example/Message',
@@ -18,8 +18,12 @@ export const MessageInnerDemo = () => {
 	);
 };
 
-// const info = () => {
-// 	message.info('This is a normal message');
-// };
+const info = () => {
+	message.info('This is a normal message', 1);
+	message.success('This is a normal message', 2);
+	message.warning('This is a normal message', 3);
+	message.loading('This is a normal message', 4);
+	message.error('This is a normal message', 5);
+};
 
-// export const App: React.FC = () => <button onClick={info}>Display normal message</button>;
+export const App: React.FC = () => <button onClick={info}>Display normal message</button>;
