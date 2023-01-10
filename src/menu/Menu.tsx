@@ -2,9 +2,12 @@ import React, { CSSProperties, ReactNode, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import './index.scss';
 import MenuContext, { MenuMode } from './MenuContext';
+import Item from './Item';
 
 export interface menuProps {
 	className?: string;
+	prefix?: string;
+	items?: { key: string; label: React.ReactNode; [propName: string]: any }[];
 	mode?: MenuMode;
 	theme?: 'light' | 'dark';
 	defaultSelectedKeys?: string[];
@@ -32,6 +35,8 @@ const Menu = (props: menuProps) => {
 		inlineIndent = 24,
 		multiple = false,
 		onSelect,
+		items,
+		prefix,
 		...others
 	} = props;
 	const [selectedKeys, setSelectedKeys] = useState(pSelectedKeys || defaultSelectedKeys || []);
@@ -73,6 +78,14 @@ const Menu = (props: menuProps) => {
 		[`ant-menu-${theme}`]: true,
 	});
 
+	const newChildren = children
+		? children
+		: items?.map((item) => (
+				<Item prefix={prefix} id={item.key} key={item.key} icon={item.icon}>
+					{item.label}
+				</Item>
+		  ));
+
 	return (
 		<MenuContext.Provider
 			value={{
@@ -85,7 +98,7 @@ const Menu = (props: menuProps) => {
 				onOpenChange: handleOpenChange,
 			}}>
 			<ul className={cls} style={style} {...others}>
-				{children}
+				{newChildren}
 			</ul>
 		</MenuContext.Provider>
 	);
