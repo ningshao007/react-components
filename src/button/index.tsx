@@ -17,7 +17,7 @@ type NativeButtonProps = BaseProps & React.HTMLAttributes<HTMLButtonElement>;
 type AnchorButtonProps = BaseProps & React.HTMLAttributes<HTMLAnchorElement>;
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
-const Button = (props: ButtonProps) => {
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props: ButtonProps) => {
 	const { className, type = 'normal', size = 'medium', children, style, htmlType = 'button', href, disabled, ...restProps } = props;
 
 	const cls = classNames('ant-btn', className, {
@@ -39,6 +39,6 @@ const Button = (props: ButtonProps) => {
 			</button>
 		);
 	}
-};
+});
 
 export default Button;
