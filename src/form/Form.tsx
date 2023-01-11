@@ -24,7 +24,7 @@ const Form = (props: formProps) => {
 	const cls = classNames('ant-form', className, 'ant-form-horizontal');
 
 	const onValueChange = (key: string, value: any) => {
-		values[key] = value;
+		setValues({ ...values, [key]: value });
 	};
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
